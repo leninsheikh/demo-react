@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class User extends Component {
     render() {
@@ -9,11 +10,11 @@ class User extends Component {
                     <div className="row">
                         <div className="input-field col s6">
                         <input
-                            value={this.props.form.firstName} 
-                            id="first_name" 
-                            type="text" 
-                            className="validate" 
-                            onChange={(e) => this.props.change('firstName', e)}                            
+                            value={this.props.form.firstName}
+                            id="first_name"
+                            type="text"
+                            className="validate"
+                            onChange={(e) => this.props.change('firstName', e)}
                             />
                         <label>First Name</label>
                         </div>
@@ -27,13 +28,23 @@ class User extends Component {
                         </div>
                     </div>
                     </form>
-                    
-                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+
+                <button onClick={this.props.onIncrementCounter} className="btn waves-effect waves-light" type="submit" name="action">Submit
                 </button>
                 </div>
             </div>
         )
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return{
+        onIncrementCounter : () => dispatch({type: 'INCREMENT'})
+    }
+};
 
-export default User;
+const mapStateToProps = state => {
+    return {
+        counter : state.testReducer.counter
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(User);

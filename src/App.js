@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import User from './Form/User';
+import UserFrom from './Form/User/UserForm';
+import Users from './Users/Users';
+import { connect } from 'react-redux';
+import Header from './Header/Header';
 
 class App extends Component {
   state = {
@@ -20,14 +23,39 @@ class App extends Component {
     form[fieldName] = e.target.value
     this.setState({ form: form});
   }
+
+  reduxFormHandler = data => {
+    console.log(data);
+    let user = {...data}
+    user.id = new Date();
+    this.props.onAddUser(user);
+    console.log(user);
+  }
   render() {
     return (
-      <div className="App">
-        <h2>Hi {this.state.form.firstName + ' ' + this.state.form.lastName }</h2>
-        <User change={this.formChnageHandler} form={this.state.form}></User>
+      // <div className="App">
+      // <Greetings form={this.state.form}></Greetings>
+      //   <User change={this.formChnageHandler} form={this.state.form}></User>
+      // </div>
+      <div style={{marginTop: '50px'}}>
+      <Header></Header>
+      <UserFrom onSubmit={this.reduxFormHandler}></UserFrom>
+      <Users></Users>
       </div>
+
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      users: state.testReducer.users
+
+  };
+}
+const mapDispatchToProps = (dispatch) => {
+  return{
+      onAddUser : (newUser) => dispatch({type: 'ADD_USER', user: newUser})
+  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
