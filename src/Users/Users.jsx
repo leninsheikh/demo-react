@@ -8,7 +8,11 @@ const Users = props => {
             <div className='col s10 offset-s1'>
                 <ul className="collection with-header">
                     <li  className="collection-header">
-                    <h1 style={{textAlign: 'center', fontSize: '19pt'}}>Users</h1>
+                    <h1 style={{textAlign: 'center', fontSize: '19pt'}}>
+                    Users <span style={{color:'grey', fontSize: '10pt'}}>
+                    (click row to delete)
+                    </span>
+                    </h1>
                     </li>
                     {props.users.map(user => (
                         <li onClick={() => props.onRemoveUser(user.id)}

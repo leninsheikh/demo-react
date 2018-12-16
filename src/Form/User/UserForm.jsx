@@ -17,7 +17,7 @@ const SyncValidationForm = (props) => {
                         className="waves-effect waves-light btn"
                         type="submit"
                         disabled={submitting}>
-                        Submit
+                        Save User
                  </button>
                     <button style={style}
                         className="waves-effect waves-light btn"
