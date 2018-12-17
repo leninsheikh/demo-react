@@ -7909,6 +7909,11 @@ reduce-css-calc@^2.0.0:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
 
+redux-form-validators@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/redux-form-validators/-/redux-form-validators-2.7.2.tgz#43d6581bf61eabfd4f17bdb41b955710afd10f77"
+  integrity sha512-FmrkTy4eAEgJU1bHvJpWyswov2arhYGHyOW8C/uNXnzpCU4tZfMV40MhjKdgqPg9BY/x1o0kUNUsb9corYQ3pg==
+
 redux-form@^8.0.4:
   version "8.0.4"
   resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-8.0.4.tgz#42f2dac0f8712a990a609979e7eb374292ad7fe1"

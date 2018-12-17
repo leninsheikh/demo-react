@@ -6,9 +6,9 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
                   placeholder={label}
                   className="validate" />
                 <label className="active">{label}</label>
-                {touched && error && <span style={{color : 'red'}}>{error}</span>}
+                {touched && error && <span style={{color : 'red'}} className="helper-text" data-error={error}>{error} </span>}
             </div>
     </div>
-)
+);
 
 export default renderField;
