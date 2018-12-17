@@ -1,7 +1,7 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import renderField from './renderField';
-import {required, email} from 'redux-form-validators'
+import {required, email, length} from 'redux-form-validators'
 
 const SyncValidationForm = (props) => {
     const {handleSubmit, pristine, reset, submitting} = props;
@@ -12,7 +12,10 @@ const SyncValidationForm = (props) => {
                    type="text"
                    component={renderField}
                    label="Username"
-                   validate={required({message: 'username is required'})}/>
+                   validate={[
+                       required({message: 'username is required'}),
+                       length({ min: 2, max: 8 })
+                   ]}/>
             <Field name="email"
                    type="email"
                    component={renderField}
